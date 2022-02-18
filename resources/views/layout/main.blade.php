@@ -135,7 +135,7 @@
                     <li id="adjustment-create-menu"><a href="{{route('qty_adjustment.create')}}">{{trans('file.Add Adjustment')}}</a></li>
                   @endif
                   @if($stock_count_active)
-                    <li id="stock-count-menu"><a href="{{route('stock-count.index')}}">{{trans('file.Stock Count')}}</a></li>
+                    {{-- <li id="stock-count-menu"><a href="{{route('stock-count.index')}}">{{trans('file.Stock Count')}}</a></li> --}}
                   @endif
                 </ul>
               </li>
@@ -229,7 +229,7 @@
                     ])->first();
               ?>
               @if($index_permission_active)
-              <li><a href="#expense" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-wallet"></i><span>{{trans('file.Expense')}}</span></a>
+              {{-- <li><a href="#expense" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-wallet"></i><span>{{trans('file.Expense')}}</span></a>
                 <ul id="expense" class="collapse list-unstyled ">
                   <li id="exp-cat-menu"><a href="{{route('expense_categories.index')}}">{{trans('file.Expense Category')}}</a></li>
                   <li id="exp-list-menu"><a href="{{route('expenses.index')}}">{{trans('file.Expense List')}}</a></li>
@@ -244,7 +244,7 @@
                   <li><a id="add-expense" href=""> {{trans('file.Add Expense')}}</a></li>
                   @endif
                 </ul>
-              </li>
+              </li> --}}
               @endif
               <?php
                 $index_permission = DB::table('permissions')->where('name', 'quotes-index')->first();
@@ -254,7 +254,7 @@
                     ])->first();
               ?>
               @if($index_permission_active)
-              <li><a href="#quotation" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-document"></i><span>{{trans('file.Quotation')}}</span><span></a>
+              {{-- <li><a href="#quotation" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-document"></i><span>{{trans('file.Quotation')}}</span><span></a>
                 <ul id="quotation" class="collapse list-unstyled ">
                   <li id="quotation-list-menu"><a href="{{route('quotations.index')}}">{{trans('file.Quotation List')}}</a></li>
                   <?php
@@ -268,7 +268,7 @@
                   <li id="quotation-create-menu"><a href="{{route('quotations.create')}}">{{trans('file.Add Quotation')}}</a></li>
                   @endif
                 </ul>
-              </li>
+              </li> --}}
               @endif
               <?php
                 $index_permission = DB::table('permissions')->where('name', 'transfers-index')->first();
@@ -278,7 +278,7 @@
                     ])->first();
               ?>
               @if($index_permission_active)
-              <li><a href="#transfer" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-export"></i><span>{{trans('file.Transfer')}}</span></a>
+              {{-- <li><a href="#transfer" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-export"></i><span>{{trans('file.Transfer')}}</span></a>
                 <ul id="transfer" class="collapse list-unstyled ">
                   <li id="transfer-list-menu"><a href="{{route('transfers.index')}}">{{trans('file.Transfer List')}}</a></li>
                   <?php
@@ -293,7 +293,7 @@
                   <li id="transfer-import-menu"><a href="{{url('transfers/transfer_by_csv')}}">{{trans('file.Import Transfer By CSV')}}</a></li>
                   @endif
                 </ul>
-              </li>
+              </li> --}}
               @endif
 
               <?php
@@ -312,7 +312,7 @@
                         ])->first();
               ?>
               @if($sale_return_index_permission_active || $purchase_return_index_permission_active)
-              <li><a href="#return" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-return"></i><span>{{trans('file.return')}}</span></a>
+              {{-- <li><a href="#return" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-return"></i><span>{{trans('file.return')}}</span></a>
                 <ul id="return" class="collapse list-unstyled ">
                   @if($sale_return_index_permission_active)
                   <li id="sale-return-menu"><a href="{{route('return-sale.index')}}">{{trans('file.Sale')}}</a></li>
@@ -321,7 +321,7 @@
                   <li id="purchase-return-menu"><a href="{{route('return-purchase.index')}}">{{trans('file.Purchase')}}</a></li>
                   @endif
                 </ul>
-              </li>
+              </li> --}}
               @endif
               <?php
                 $index_permission = DB::table('permissions')->where('name', 'account-index')->first();
@@ -392,7 +392,7 @@
               ?>
 
               @if(Auth::user()->role_id != 5)
-              <li class=""><a href="#hrm" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user-group"></i><span>HRM</span></a>
+              {{-- <li class=""><a href="#hrm" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user-group"></i><span>HRM</span></a>
                 <ul id="hrm" class="collapse list-unstyled ">
                   @if($department_active)
                   <li id="dept-menu"><a href="{{route('departments.index')}}">{{trans('file.Department')}}</a></li>
@@ -408,7 +408,7 @@
                   @endif
                   <li id="holiday-menu"><a href="{{route('holidays.index')}}">{{trans('file.Holiday')}}</a></li>
                 </ul>
-              </li>
+              </li> --}}
               @endif
 
               <?php
@@ -810,13 +810,13 @@
                   </li>
                   @endif
                   @if($warehouse_permission_active)
-                  <li id="warehouse-menu"><a href="{{route('warehouse.index')}}">{{trans('file.Warehouse')}}</a></li>
+                  {{-- <li id="warehouse-menu"><a href="{{route('warehouse.index')}}">{{trans('file.Warehouse')}}</a></li> --}}
                   @endif
                   @if($customer_group_permission_active)
-                  <li id="customer-group-menu"><a href="{{route('customer_group.index')}}">{{trans('file.Customer Group')}}</a></li>
+                  {{-- <li id="customer-group-menu"><a href="{{route('customer_group.index')}}">{{trans('file.Customer Group')}}</a></li> --}}
                   @endif
                   @if($brand_permission_active)
-                  <li id="brand-menu"><a href="{{route('brand.index')}}">{{trans('file.Brand')}}</a></li>
+                  {{-- <li id="brand-menu"><a href="{{route('brand.index')}}">{{trans('file.Brand')}}</a></li> --}}
                   @endif
                   @if($unit_permission_active)
                   <li id="unit-menu"><a href="{{route('unit.index')}}">{{trans('file.Unit')}}</a></li>
@@ -825,11 +825,11 @@
                   <li id="currency-menu"><a href="{{route('currency.index')}}">{{trans('file.Currency')}}</a></li>
                   @endif
                   @if($tax_permission_active)
-                  <li id="tax-menu"><a href="{{route('tax.index')}}">{{trans('file.Tax')}}</a></li>
+                  {{-- <li id="tax-menu"><a href="{{route('tax.index')}}">{{trans('file.Tax')}}</a></li> --}}
                   @endif
                   <li id="user-menu"><a href="{{route('user.profile', ['id' => Auth::id()])}}">{{trans('file.User Profile')}}</a></li>
                   @if($create_sms_permission_active)
-                  <li id="create-sms-menu"><a href="{{route('setting.createSms')}}">{{trans('file.Create SMS')}}</a></li>
+                  {{-- <li id="create-sms-menu"><a href="{{route('setting.createSms')}}">{{trans('file.Create SMS')}}</a></li> --}}
                   @endif
                   @if($backup_database_permission_active)
                   <li><a href="{{route('setting.backup')}}">{{trans('file.Backup Database')}}</a></li>
@@ -838,19 +838,19 @@
                   <li id="general-setting-menu"><a href="{{route('setting.general')}}">{{trans('file.General Setting')}}</a></li>
                   @endif
                   @if($mail_setting_permission_active)
-                  <li id="mail-setting-menu"><a href="{{route('setting.mail')}}">{{trans('file.Mail Setting')}}</a></li>
+                  {{-- <li id="mail-setting-menu"><a href="{{route('setting.mail')}}">{{trans('file.Mail Setting')}}</a></li> --}}
                   @endif
                   @if($reward_point_setting_permission_active)
-                  <li id="reward-point-setting-menu"><a href="{{route('setting.rewardPoint')}}">{{trans('file.Reward Point Setting')}}</a></li>
+                  {{-- <li id="reward-point-setting-menu"><a href="{{route('setting.rewardPoint')}}">{{trans('file.Reward Point Setting')}}</a></li> --}}
                   @endif
                   @if($sms_setting_permission_active)
-                  <li id="sms-setting-menu"><a href="{{route('setting.sms')}}">{{trans('file.SMS Setting')}}</a></li>
+                  {{-- <li id="sms-setting-menu"><a href="{{route('setting.sms')}}">{{trans('file.SMS Setting')}}</a></li> --}}
                   @endif
                   @if($pos_setting_permission_active)
-                  <li id="pos-setting-menu"><a href="{{route('setting.pos')}}">POS {{trans('file.settings')}}</a></li>
+                  {{-- <li id="pos-setting-menu"><a href="{{route('setting.pos')}}">POS {{trans('file.settings')}}</a></li> --}}
                   @endif
                   @if($hrm_setting_permission_active)
-                  <li id="hrm-setting-menu"><a href="{{route('setting.hrm')}}"> {{trans('file.HRM Setting')}}</a></li>
+                  {{-- <li id="hrm-setting-menu"><a href="{{route('setting.hrm')}}"> {{trans('file.HRM Setting')}}</a></li> --}}
                   @endif
                 </ul>
               </li>
@@ -887,11 +887,11 @@
                   ])->first();
                 ?>
                 @if($add_permission_active)
-                <li class="nav-item"><a class="dropdown-item btn-pos btn-sm" href="{{route('sale.pos')}}"><i class="dripicons-shopping-bag"></i><span> POS</span></a></li>
+                {{-- <li class="nav-item"><a class="dropdown-item btn-pos btn-sm" href="{{route('sale.pos')}}"><i class="dripicons-shopping-bag"></i><span> POS</span></a></li> --}}
                 @endif
                 <li class="nav-item"><a id="btnFullscreen" data-toggle="tooltip" title="{{trans('file.Full Screen')}}"><i class="dripicons-expand"></i></a></li>
                 @if(\Auth::user()->role_id <= 2)
-                  <li class="nav-item"><a href="{{route('cashRegister.index')}}" data-toggle="tooltip" title="{{trans('file.Cash Register List')}}"><i class="dripicons-archive"></i></a></li>
+                  {{-- <li class="nav-item"><a href="{{route('cashRegister.index')}}" data-toggle="tooltip" title="{{trans('file.Cash Register List')}}"><i class="dripicons-archive"></i></a></li> --}}
                 @endif
                 @if($product_qty_alert_active)
                   @if(($alert_product + count(\Auth::user()->unreadNotifications)) > 0)
@@ -930,9 +930,12 @@
                             <a href="{{ url('language_switch/en') }}" class="btn btn-link"> English</a>
                           </li>
                           <li>
-                            <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
+                            <a href="{{ url('language_switch/ind') }}" class="btn btn-link"> Indonesia</a>
                           </li>
-                          <li>
+                          {{-- <li>
+                            <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
+                          </li> --}}
+                          {{-- <li>
                             <a href="{{ url('language_switch/ar') }}" class="btn btn-link"> عربى</a>
                           </li>
                           <li>
@@ -970,7 +973,7 @@
                           </li>
                           <li>
                             <a href="{{ url('language_switch/lao') }}" class="btn btn-link"> Lao</a>
-                          </li>
+                          </li> --}}
                       </ul>
                 </li>
                 @if(Auth::user()->role_id != 5)
