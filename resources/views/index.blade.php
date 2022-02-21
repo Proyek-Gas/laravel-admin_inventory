@@ -110,7 +110,7 @@
         </div>
       </div>
       <!-- Counts Section -->
-      <section class="dashboard-counts">
+      {{-- <section class="dashboard-counts">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 form-group">
@@ -451,7 +451,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 
 
 @endsection

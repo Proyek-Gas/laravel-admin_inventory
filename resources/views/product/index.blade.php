@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-md-5" id="slider-content"></div>
                 <div class="col-md-5 offset-1" id="product-content"></div>
-                <div class="col-md-12 mt-2" id="product-warehouse-section">
+                {{-- <div class="col-md-12 mt-2" id="product-warehouse-section">
                     <h5>{{trans('file.Warehouse Quantity')}}</h5>
                     <table class="table table-bordered table-hover product-warehouse-list">
                         <thead>
@@ -107,7 +107,7 @@
                         <tbody>
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
             </div>
 
             <h5 id="combo-header"></h5>
