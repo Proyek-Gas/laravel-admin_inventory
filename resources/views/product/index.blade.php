@@ -344,10 +344,10 @@
                 {"data": "options"},
             ],
             'language': {
-                /*'searchPlaceholder': "{{trans('file.Type Product Name or Code...')}}",*/
-                'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
+                'searchPlaceholder': "{{trans('file.Type Product Name or Code...')}}",
+                'lengthMenu': "_MENU_{{trans('file.Items')}}",
                  "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
-                "search":  '{{trans("file.Search")}}',
+                "search":  '',
                 'paginate': {
                         'previous': '<i class="dripicons-chevron-left"></i>',
                         'next': '<i class="dripicons-chevron-right"></i>'
@@ -472,11 +472,13 @@
                 },
             ],
         } );
+        if(all_permission.indexOf("products-delete") == -1){
 
+            $('.buttons-delete').addClass('d-none');
+        }
     } );
 
-    if(all_permission.indexOf("products-delete") == -1)
-        $('.buttons-delete').addClass('d-none');
+
 
     $('select').selectpicker();
 
