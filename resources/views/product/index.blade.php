@@ -27,16 +27,10 @@
             <thead>
                 <tr>
                     <th class="not-exported"></th>
-                    <th>{{trans('file.Image')}}</th>
-                    <th>{{trans('file.name')}}</th>
-                    <th>{{trans('file.Code')}}</th>
-                    <th>{{trans('file.Brand')}}</th>
-                    <th>{{trans('file.category')}}</th>
+                    <th>{{trans('file.Item No.')}}</th>
+                    <th>{{trans('file.Description')}}</th>
                     <th>{{trans('file.Quantity')}}</th>
-                    <th>{{trans('file.Unit')}}</th>
-                    <th>{{trans('file.Price')}}</th>
-                    <th>{{trans('file.Cost')}}</th>
-                    <th>{{trans('file.Stock Worth (Price/Cost)')}}</th>
+                    <th>{{trans('file.category')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
             </thead>
@@ -55,7 +49,8 @@
         </div>
         <div class="modal-body">
           <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-           <p>{{trans('file.The correct column order is')}} (image, name*, code*, type*, brand, category*, unit_code*, cost*, price*, product_details, variant_name, item_code, additional_price) {{trans('file.and you must follow this')}}.</p>
+           {{-- <p>{{trans('file.The correct column order is')}} (image, name*, code*, type*, brand, category*, unit_code*, cost*, price*, product_details, variant_name, item_code, additional_price) {{trans('file.and you must follow this')}}.</p> --}}
+           <p>{{trans('file.The correct column order is')}} (item no.*, description, quantity*, category) {{trans('file.and you must follow this')}}.</p>
            <p>{{trans('file.To display Image it must be stored in')}} public/images/product {{trans('file.directory')}}. {{trans('file.Image name must be same as product name')}}</p>
            <div class="row">
                 <div class="col-md-6">
@@ -185,25 +180,26 @@
     function productDetails(product, imagedata) {
         product[11] = product[11].replace(/@/g, '"');
         htmltext = slidertext = '';
+        //ubah
+        htmltext = '<p><strong>{{trans("file.Code")}}: </strong>'+product[2]+ '</p><p><strong>{{trans("file.category")}}: </strong>'+product[4]+'</p><p><strong>{{trans("file.Quantity")}}: </strong>'+product[17]+'</p><p><strong>{{trans("file.Product Details")}}: </strong></p>'+product[11];
 
-        htmltext = '<p><strong>{{trans("file.Type")}}: </strong>'+product[0]+'</p><p><strong>{{trans("file.name")}}: </strong>'+product[1]+'</p><p><strong>{{trans("file.Code")}}: </strong>'+product[2]+ '</p><p><strong>{{trans("file.Brand")}}: </strong>'+product[3]+'</p><p><strong>{{trans("file.category")}}: </strong>'+product[4]+'</p><p><strong>{{trans("file.Quantity")}}: </strong>'+product[17]+'</p><p><strong>{{trans("file.Unit")}}: </strong>'+product[5]+'</p><p><strong>{{trans("file.Cost")}}: </strong>'+product[6]+'</p><p><strong>{{trans("file.Price")}}: </strong>'+product[7]+'</p><p><strong>{{trans("file.Tax")}}: </strong>'+product[8]+'</p><p><strong>{{trans("file.Tax Method")}} : </strong>'+product[9]+'</p><p><strong>{{trans("file.Alert Quantity")}} : </strong>'+product[10]+'</p><p><strong>{{trans("file.Product Details")}}: </strong></p>'+product[11];
-
-        if(product[18]) {
-            var product_image = product[18].split(",");
-            if(product_image.length > 1) {
-                slidertext = '<div id="product-img-slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
-                for (var i = 0; i < product_image.length; i++) {
-                    if(!i)
-                        slidertext += '<div class="carousel-item active"><img src="public/images/product/'+product_image[i]+'" height="300" width="100%"></div>';
-                    else
-                        slidertext += '<div class="carousel-item"><img src="public/images/product/'+product_image[i]+'" height="300" width="100%"></div>';
-                }
-                slidertext += '</div><a class="carousel-control-prev" href="#product-img-slider" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#product-img-slider" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
-            }
-            else {
-                slidertext = '<img src="public/images/product/'+product[18]+'" height="300" width="100%">';
-            }
-        }
+        //ubah
+        // if(product[18]) {
+        //     var product_image = product[18].split(",");
+        //     if(product_image.length > 1) {
+        //         slidertext = '<div id="product-img-slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
+        //         for (var i = 0; i < product_image.length; i++) {
+        //             if(!i)
+        //                 slidertext += '<div class="carousel-item active"><img src="public/images/product/'+product_image[i]+'" height="300" width="100%"></div>';
+        //             else
+        //                 slidertext += '<div class="carousel-item"><img src="public/images/product/'+product_image[i]+'" height="300" width="100%"></div>';
+        //         }
+        //         slidertext += '</div><a class="carousel-control-prev" href="#product-img-slider" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#product-img-slider" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
+        //     }
+        //     else {
+        //         slidertext = '<img src="public/images/product/'+product[18]+'" height="300" width="100%">';
+        //     }
+        // }
 
         $("#combo-header").text('');
         $("table.item-list thead").remove();
@@ -325,22 +321,18 @@
                 type:"post"
             },
             "createdRow": function( row, data, dataIndex ) {
+                console.log(data)
                 $(row).addClass('product-link');
                 $(row).attr('data-product', data['product']);
                 $(row).attr('data-imagedata', data['imagedata']);
             },
+            //ubah
             "columns": [
                 {"data": "key"},
-                {"data": "image"},
-                {"data": "name"},
                 {"data": "code"},
-                {"data": "brand"},
-                {"data": "category"},
+                {"data": "product_details"},
                 {"data": "qty"},
-                {"data": "unit"},
-                {"data": "price"},
-                {"data": "cost"},
-                {"data": "stock_worth"},
+                {"data": "category"},
                 {"data": "options"},
             ],
             'language': {
@@ -357,7 +349,7 @@
             'columnDefs': [
                 {
                     "orderable": false,
-                    'targets': [0, 1, 9, 10, 11]
+                    'targets': [0, 5] //ubah
                 },
                 {
                     'render': function(data, type, row, meta){

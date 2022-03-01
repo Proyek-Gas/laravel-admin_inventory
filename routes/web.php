@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 	Route::get('sales/gen_invoice/{id}', 'SaleController@genInvoice')->name('sale.invoice');
 	Route::post('sales/add_payment', 'SaleController@addPayment')->name('sale.add-payment');
 	Route::get('sales/getpayment/{id}', 'SaleController@getPayment')->name('sale.get-payment');
-	Route::post('sales/updatepayment', 'SaleController@updatePayment')->name('sale.update-payment');
+	Route::post('sales/updatepayment', 'SaleController@updatePayment')->name('sale.product-payment');
 	Route::post('sales/deletepayment', 'SaleController@deletePayment')->name('sale.delete-payment');
 	Route::get('sales/{id}/create', 'SaleController@createSale');
 	Route::post('sales/deletebyselection', 'SaleController@deleteBySelection');

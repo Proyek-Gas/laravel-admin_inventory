@@ -13,7 +13,7 @@
                         <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                         <form id="product-form">
                             <div class="row">
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Type')}} *</strong> </label>
                                         <div class="input-group">
@@ -25,14 +25,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> --}}
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Name')}} *</strong> </label>
                                         <input type="text" name="name" class="form-control" id="name" aria-describedby="name" required>
                                         <span class="validation-msg" id="name-error"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Code')}} *</strong> </label>
@@ -45,7 +45,7 @@
                                         <span class="validation-msg" id="code-error"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Barcode Symbology')}} *</strong> </label>
                                         <div class="input-group">
@@ -59,8 +59,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="digital" class="col-md-4">
+                                </div> --}}
+                                {{-- <div id="digital" class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Attach File')}} *</strong> </label>
                                         <div class="input-group">
@@ -68,8 +68,8 @@
                                         </div>
                                         <span class="validation-msg"></span>
                                     </div>
-                                </div>
-                                <div id="combo" class="col-md-9 mb-1">
+                                </div> --}}
+                                {{-- <div id="combo" class="col-md-9 mb-1">
                                     <label>{{trans('file.add_product')}}</label>
                                     <div class="search-box input-group mb-3">
                                         <button class="btn btn-secondary"><i class="fa fa-barcode"></i></button>
@@ -90,8 +90,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> --}}
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Brand')}}</strong> </label>
                                         <div class="input-group">
@@ -102,7 +102,7 @@
                                           </select>
                                       </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.category')}} *</strong> </label>
@@ -116,7 +116,7 @@
                                       <span class="validation-msg"></span>
                                     </div>
                                 </div>
-                                <div id="unit" class="col-md-12">
+                                {{-- <div id="unit" class="col-md-12">
                                     <div class="row ">
                                         <div class="col-md-4 form-group">
                                                 <label>{{trans('file.Product Unit')}} *</strong> </label>
@@ -149,31 +149,36 @@
                                                 </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="cost" class="col-md-4">
+                                </div> --}}
+                                {{-- <div id="cost" class="col-md-4">
                                      <div class="form-group">
                                         <label>{{trans('file.Product Cost')}} *</strong> </label>
                                         <input type="number" name="cost" required class="form-control" step="any">
                                         <span class="validation-msg"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>{{trans('file.Product Price')}} *</strong> </label>
                                         <input type="number" name="price" required class="form-control" step="any">
                                         <span class="validation-msg"></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" name="qty" value="0.00">
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label>Quantity *</strong> </label>
+                                        <input type="number" name="qty" required class="form-control" step="any">
+                                        <span class="validation-msg"></span>
                                     </div>
                                 </div>
-                                <div id="alert-qty" class="col-md-4">
+                                {{-- <div id="alert-qty" class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Alert Quantity')}}</strong> </label>
                                         <input type="number" name="alert_quantity" class="form-control" step="any">
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> --}}
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Tax')}}</strong> </label>
                                         <select name="tax_id" class="form-control selectpicker">
@@ -183,8 +188,8 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> --}}
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Tax Method')}}</strong> </label> <i class="dripicons-question" data-toggle="tooltip" title="{{trans('file.Exclusive: Poduct price = Actual product price + Tax. Inclusive: Actual product price = Product price - Tax')}}"></i>
                                         <select name="tax_method" class="form-control selectpicker">
@@ -192,15 +197,15 @@
                                             <option value="2">{{trans('file.Inclusive')}}</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> --}}
+                                {{-- <div class="col-md-4">
                                     <div class="form-group mt-3">
                                         <input type="checkbox" name="featured" value="1">&nbsp;
                                         <label>{{trans('file.Featured')}}</label>
                                         <p class="italic">{{trans('file.Featured product will be displayed in POS')}}</p>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
+                                </div> --}}
+                                <div class="col-md-12 d-none">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Image')}}</strong> </label> <i class="dripicons-question" data-toggle="tooltip" title="{{trans('file.You can upload multiple image. Only .jpeg, .jpg, .png, .gif file can be uploaded. First image will be base image.')}}"></i>
                                         <div id="imageUpload" class="dropzone"></div>
@@ -210,10 +215,10 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Details')}}</label>
-                                        <textarea name="product_details" class="form-control" rows="3"></textarea>
+                                        <textarea name="product_details" id="product_details" class="form-control" rows="3" required></textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mt-2" id="diffPrice-option">
+                                {{-- <div class="col-md-12 mt-2" id="diffPrice-option">
                                     <h5><input name="is_diffPrice" type="checkbox" id="is-diffPrice" value="1">&nbsp; {{trans('file.This product has different price for different warehouse')}}</h5>
                                 </div>
                                 <div class="col-md-6" id="diffPrice-section">
@@ -267,8 +272,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <div class="col-md-4 mt-3">
+                                </div> --}}
+                                {{-- <div class="col-md-4 mt-3">
                                     <input name="promotion" type="checkbox" id="promotion" value="1">&nbsp;
                                     <label><h5> {{trans('file.Add Promotional Price')}}</h5></label>
                                 </div>
@@ -301,7 +306,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group">
                                 <input type="button" value="{{trans('file.submit')}}" id="submit-btn" class="btn btn-primary">
@@ -349,7 +354,7 @@
 
     tinymce.init({
       selector: 'textarea',
-      height: 130,
+      height: 50,
       plugins: [
         'advlist autolink lists link image charmap print preview anchor textcolor',
         'searchreplace visualblocks code fullscreen',
@@ -742,17 +747,17 @@
                 e.preventDefault();
                 if ( $("#product-form").valid() && validate() ) {
                     tinyMCE.triggerSave();
-                    if(myDropzone.getAcceptedFiles().length) {
-                        myDropzone.processQueue();
-                    }
-                    else {
+                    // if(myDropzone.getAcceptedFiles().length) {
+                    //     myDropzone.processQueue();
+                    // }
+                    //else {
                         $.ajax({
                             type:'POST',
                             url:'{{route('products.store')}}',
                             data: $("#product-form").serialize(),
                             success:function(response){
                                 //console.log(response);
-                                location.href = '../products';
+                                location.href = '<?php echo route("products.index")?>';
                             },
                             error:function(response) {
                               if(response.responseJSON.errors.name) {
@@ -763,7 +768,7 @@
                               }
                             },
                         });
-                    }
+                    //}
                 }
             });
 
@@ -776,7 +781,6 @@
             });
         },
         error: function (file, response) {
-            console.log(response);
             if(response.errors.name) {
               $("#name-error").text(response.errors.name);
               this.removeAllFiles(true);
