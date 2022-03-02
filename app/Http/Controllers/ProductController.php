@@ -54,6 +54,7 @@ class ProductController extends Controller
             10 => 'stock_worth'
         );
 
+
         $totalData = Product::where('is_active', true)->count();
         $totalFiltered = $totalData;
 
@@ -202,6 +203,8 @@ class ProductController extends Controller
         echo json_encode($json_data);
     }
 
+
+
     public function create()
     {
         $role = Role::firstOrCreate(['id' => Auth::user()->role_id]);
@@ -217,6 +220,24 @@ class ProductController extends Controller
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+    }
+
+    //fendy
+    public function addUserOrder(Request $request){
+        $insert_prod_user = DB::table('user_product_orders_daily')->insert(array(
+            "id_users" => $request->id_user,
+            "id_products" => $request->id_product,
+            "qty" => $request->quant,
+        ));
+
+        return redirect("/products");
+    }
+
+    public function editUserOrder(Request $request){
+        $qty_now = $request->quant;
+        $insert_prod_user = DB::table('user_product_orders_daily')->where('id',$request->id_user_order)->update(['qty'=>$qty_now]);
+
+        return redirect("my-order");
     }
 
     public function store(Request $request)

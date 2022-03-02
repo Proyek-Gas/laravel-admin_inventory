@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 	Route::post('importproduct', 'ProductController@importProduct')->name('product.import');
 	Route::post('exportproduct', 'ProductController@exportProduct')->name('product.export');
 	Route::get('products/print_barcode','ProductController@printBarcode')->name('product.printBarcode');
-	
+
 	Route::get('products/lims_product_search', 'ProductController@limsProductSearch')->name('product.search');
 	Route::post('products/deletebyselection', 'ProductController@deleteBySelection');
 	Route::post('products/update', 'ProductController@updateProduct');
@@ -216,7 +216,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 
 	Route::get('setting/general_setting', 'SettingController@generalSetting')->name('setting.general');
 	Route::post('setting/general_setting_store', 'SettingController@generalSettingStore')->name('setting.generalStore');
-	
+
 	Route::get('setting/reward-point-setting', 'SettingController@rewardPointSetting')->name('setting.rewardPoint');
 	Route::post('setting/reward-point-setting_store', 'SettingController@rewardPointSettingStore')->name('setting.rewardPointStore');
 
@@ -293,5 +293,12 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('my-transactions/{year}/{month}', 'HomeController@myTransaction');
+
+    //fendy
+    Route::get('my-order','HomeController@myOrder');
 });
+
+//fendy
+Route::post('products/addUserOrder', 'ProductController@addUserOrder')->name('products.addOrderUser');
+Route::post('products/editUserOrder', 'ProductController@editUserOrder')->name('products.editOrderUser');
 

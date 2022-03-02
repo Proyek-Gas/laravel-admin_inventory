@@ -993,13 +993,16 @@
                         <a href="{{route('setting.general')}}"><i class="dripicons-gear"></i> {{trans('file.settings')}}</a>
                       </li>
                       @endif
-                      <li>
+                      {{-- <li>
                         <a href="{{url('my-transactions/'.date('Y').'/'.date('m'))}}"><i class="dripicons-swap"></i> {{trans('file.My Transaction')}}</a>
+                      </li> --}}
+                      <li>
+                        <a href="{{url('my-order')}}"><i class="dripicons-swap"></i>{{trans('file.My Order')}}</a>
                       </li>
                       @if(Auth::user()->role_id != 5)
-                      <li>
+                      {{-- <li>
                         <a href="{{url('holidays/my-holiday/'.date('Y').'/'.date('m'))}}"><i class="dripicons-vibrate"></i> {{trans('file.My Holiday')}}</a>
-                      </li>
+                      </li> --}}
                       @endif
                       @if($empty_database_permission_active)
                       <li>

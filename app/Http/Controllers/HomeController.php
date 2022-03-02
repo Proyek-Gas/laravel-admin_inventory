@@ -53,7 +53,7 @@ class HomeController extends Controller
             "sms" => $messageBody,
             "csms_id" => $csmsId
         ];
-        
+
         $url = "https://smsplus.sslwireless.com/api/v3/send-sms";
         $params = json_encode($params);
 
@@ -152,7 +152,7 @@ class HomeController extends Controller
                         $purchased_qty = 0;
                         $purchased_amount = 0;
                         $sold_qty = $product_sale->sold_qty * $qty_list[$index];
-                        
+
                         foreach ($product_purchase_data as $product_purchase) {
                             $purchased_qty += $product_purchase->qty;
                             $purchased_amount += $product_purchase->total;
@@ -231,7 +231,7 @@ class HomeController extends Controller
                         $purchased_qty = 0;
                         $purchased_amount = 0;
                         $sold_qty = $product_sale->sold_qty * $qty_list[$index];
-                        
+
                         foreach ($product_purchase_data as $product_purchase) {
                             $purchased_qty += $product_purchase->qty;
                             $purchased_amount += $product_purchase->total;
@@ -316,7 +316,7 @@ class HomeController extends Controller
                 $payroll_amount = Payroll::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('amount');
             }
             $sent_amount = $sent_amount + $return_amount + $expense_amount + $payroll_amount;
-            
+
             $payment_recieved[] = number_format((float)($recieved_amount + $purchase_return_amount), 2, '.', '');
             $payment_sent[] = number_format((float)$sent_amount, 2, '.', '');
             $month[] = date("F", strtotime($start_date));
@@ -381,7 +381,7 @@ class HomeController extends Controller
                         $purchased_qty = 0;
                         $purchased_amount = 0;
                         $sold_qty = $product_sale->sold_qty * $qty_list[$index];
-                        
+
                         foreach ($product_purchase_data as $product_purchase) {
                             $purchased_qty += $product_purchase->qty;
                             $purchased_amount += $product_purchase->total;
@@ -459,7 +459,7 @@ class HomeController extends Controller
                         $purchased_qty = 0;
                         $purchased_amount = 0;
                         $sold_qty = $product_sale->sold_qty * $qty_list[$index];
-                        
+
                         foreach ($product_purchase_data as $product_purchase) {
                             $purchased_qty += $product_purchase->qty;
                             $purchased_amount += $product_purchase->total;
@@ -510,7 +510,7 @@ class HomeController extends Controller
             $data[2] = $profit;
             $data[3] = $purchase_return;
         }
-        
+
         return $data;
     }
 
@@ -538,5 +538,23 @@ class HomeController extends Controller
         $next_year = date('Y', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
         $next_month = date('m', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
         return view('user.my_transaction', compact('start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'sale_generated', 'sale_grand_total','purchase_generated', 'purchase_grand_total','quotation_generated', 'quotation_grand_total'));
+    }
+
+
+    //fendy
+    public function myOrder(){
+        $data = [];
+        $data_product =  array();
+        $data = DB::table('user_product_orders_daily')->where('id_users', Auth::id())->get();
+
+        foreach($data as $item){
+            $data_tmp = DB::table('products')->select('products.*','categories.name as namaKategori')->where('products.id', $item->id_products)->join('categories', 'products.category_id','=', 'categories.id')->get();
+            $data_tmp['real_qty'] = $item->qty;
+            $data_tmp['id_users'] = $item->id_users;
+            $data_tmp['id_user_order'] = $item->id;
+            array_push($data_product, $data_tmp);
+        }
+
+        return view('user.my_order', ['data_product'=> $data_product]);
     }
 }

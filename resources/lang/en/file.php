@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
@@ -86,6 +86,7 @@ return [
 	'Subtotal' => 'SubTotal',
 	'Note' => 'Note',
 	'Items' => 'Items',
+    'My Order' => 'My Order',
 	'Total' => 'Total',
 	'Recieved' => 'Received',
 	'Upload CSV File' => 'Upload CSV File',
