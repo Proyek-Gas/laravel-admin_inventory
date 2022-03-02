@@ -124,6 +124,7 @@ class CategoryController extends Controller
         echo json_encode($json_data);
     }
 
+    //ubah
     public function store(Request $request)
     {
         $request->name = preg_replace('/\s+/', ' ', $request->name);
@@ -134,19 +135,19 @@ class CategoryController extends Controller
                     return $query->where('is_active', 1);
                 }),
             ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif',
+            //'image' => 'image|mimes:jpg,jpeg,png,gif',
         ]);
-        $image = $request->image;
-        if ($image) {
-            $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
-            $imageName = date("Ymdhis");
-            $imageName = $imageName . '.' . $ext;
-            $image->move('public/images/category', $imageName);
+        //$image = $request->image;
+        // if ($image) {
+        //     $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+        //     $imageName = date("Ymdhis");
+        //     $imageName = $imageName . '.' . $ext;
+        //     $image->move('public/images/category', $imageName);
             
-            $lims_category_data['image'] = $imageName;
-        }
+        //     $lims_category_data['image'] = $imageName;
+        // }
         $lims_category_data['name'] = $request->name;
-        $lims_category_data['parent_id'] = $request->parent_id;
+        //$lims_category_data['parent_id'] = $request->parent_id;
         $lims_category_data['is_active'] = true;
         Category::create($lims_category_data);
         return redirect('category')->with('message', 'Category inserted successfully');

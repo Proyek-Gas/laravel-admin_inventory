@@ -24,12 +24,9 @@
             <thead>
                 <tr>
                     <th class="not-exported"></th>
-                    <th>{{trans('file.Image')}}</th>
                     <th>{{trans('file.category')}}</th>
-                    <th>{{trans('file.Parent Category')}}</th>
                     <th>{{trans('file.Number of Product')}}</th>
                     <th>{{trans('file.Stock Quantity')}}</th>
-                    <th>{{trans('file.Stock Worth (Price/Cost)')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
             </thead>
@@ -53,14 +50,14 @@
                     <label>{{trans('file.name')}} *</label>
                     {{Form::text('name',null,array('required' => 'required', 'class' => 'form-control', 'placeholder' => 'Type category name...'))}}
                 </div>
-                <div class="col-md-6 form-group">
+                {{-- <div class="col-md-6 form-group">
                     <label>{{trans('file.Image')}}</label>
                     <input type="file" name="image" class="form-control">
-                </div>
-                <div class="col-md-6 form-group">
+                </div> --}}
+                {{-- <div class="col-md-6 form-group">
                     <label>{{trans('file.Parent Category')}}</label>
                     {{Form::select('parent_id', $lims_categories, null, ['class' => 'form-control','placeholder' => 'No Parent Category'])}}
-                </div>
+                </div> --}}
             </div>
 
             <div class="form-group">
@@ -193,18 +190,16 @@
         },
         "columns": [
             {"data": "key"},
-            {"data": "image"},
             {"data": "name"},
-            {"data": "parent_id"},
             {"data": "number_of_product"},
             {"data": "stock_qty"},
-            {"data": "stock_worth"},
             {"data": "options"},
         ],
         'language': {
-            'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
-             "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
-            "search":  '{{trans("file.Search")}}',
+            'searchPlaceholder': "{{trans('file.Type Category Name...')}}",
+            'lengthMenu': "_MENU_{{trans('file.Items')}}",
+            "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
+            "search":  '',
             'paginate': {
                     'previous': '<i class="dripicons-chevron-left"></i>',
                     'next': '<i class="dripicons-chevron-right"></i>'
@@ -214,7 +209,7 @@
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 1, 3, 4, 5, 6, 7]
+                'targets': [4]
             },
             {
                 'render': function(data, type, row, meta){

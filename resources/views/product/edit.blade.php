@@ -14,7 +14,7 @@
                         <form id="product-form">
                             <input type="hidden" name="id" value="{{$lims_product_data->id}}" />
                             <div class="row">
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Type')}} *</strong> </label>
                                         <div class="input-group">
@@ -34,7 +34,7 @@
                                         <input type="text" name="name" value="{{$lims_product_data->name}}" required class="form-control">
                                         <span class="validation-msg" id="name-error"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Code')}} *</strong> </label>
@@ -47,7 +47,7 @@
                                         <span class="validation-msg" id="code-error"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Barcode Symbology')}} *</strong> </label>
                                         <div class="input-group">
@@ -71,8 +71,8 @@
                                         </div>
                                         <span class="validation-msg"></span>
                                     </div>
-                                </div>
-                                <div id="combo" class="col-md-9 mb-1">
+                                </div> --}}
+                                {{-- <div id="combo" class="col-md-9 mb-1">
                                     <label>{{trans('file.add_product')}}</label>
                                     <div class="search-box input-group mb-3">
                                         <button class="btn btn-secondary"><i class="fa fa-barcode"></i></button>
@@ -131,7 +131,7 @@
                                           </select>
                                       </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" name="category" value="{{$lims_product_data->category_id}}">
@@ -145,7 +145,7 @@
                                       </div>
                                     </div>
                                 </div>
-                                <div id="unit" class="col-md-12">
+                                {{-- <div id="unit" class="col-md-12">
                                     <div class="row ">
                                         <div class="col-md-4">
                                                 <label>{{trans('file.Product Unit')}} *</strong> </label>
@@ -186,18 +186,23 @@
                                         <input type="number" name="cost" value="{{$lims_product_data->cost}}" required class="form-control" step="any">
                                         <span class="validation-msg"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>{{trans('file.Product Price')}} *</strong> </label>
                                         <input type="number" name="price" value="{{$lims_product_data->price}}" required class="form-control" step="any">
                                         <span class="validation-msg"></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" name="qty" value="{{ $lims_product_data->qty }}" class="form-control">
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label>Quantity *</strong> </label>
+                                        <input type="number" name="qty" required class="form-control" value="{{ $lims_product_data->qty }}" step="any">
+                                        <span class="validation-msg"></span>
                                     </div>
                                 </div>
-                                <div id="alert-qty" class="col-md-4">
+                                {{-- <div id="alert-qty" class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Alert Quantity')}}</strong> </label>
                                         <input type="number" name="alert_quantity" value="{{$lims_product_data->alert_quantity}}" class="form-control" step="any">
@@ -234,15 +239,15 @@
                                         @endif
                                         <label>{{trans('file.Featured')}}</label>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> --}}
+                                <div class="col-md-6 d-none">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Image')}}</strong> </label> <i class="dripicons-question" data-toggle="tooltip" title="{{trans('file.You can upload multiple image. Only .jpeg, .jpg, .png, .gif file can be uploaded. First image will be base image.')}}"></i>
                                         <div id="imageUpload" class="dropzone"></div>
                                         <span class="validation-msg" id="image-error"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <table class="table table-hover">
                                             <thead>
@@ -267,14 +272,14 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Details')}}</label>
                                         <textarea name="product_details" class="form-control" rows="5">{{str_replace('@', '"', $lims_product_data->product_details)}}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mt-2" id="diffPrice-option">
+                                {{-- <div class="col-md-12 mt-2" id="diffPrice-option">
                                     @if($lims_product_data->is_diffPrice)
                                         <h5><input name="is_diffPrice" type="checkbox" id="is-diffPrice" value="1" checked>&nbsp; {{trans('file.This product has different price for different warehouse')}}</h5>
                                     @else
@@ -391,7 +396,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <input type="button" value="{{trans('file.submit')}}" class="btn btn-primary" id="submit-btn">
@@ -901,17 +906,18 @@
                 e.preventDefault();
                 if ( $("#product-form").valid() && validate() ) {
                     tinyMCE.triggerSave();
-                    if(myDropzone.getAcceptedFiles().length) {
-                        myDropzone.processQueue();
-                    }
-                    else {
+                    // if(myDropzone.getAcceptedFiles().length) {
+                    //     myDropzone.processQueue();
+                    // }
+                    //else {
                         $.ajax({
                             type:'POST',
                             url:'../update',
                             data: $("#product-form").serialize(),
                             success:function(response){
                                 //console.log(response);
-                                location.href = '../';
+                                //location.href = '../';
+                                location.href = '<?php echo route("products.index")?>';
                             },
                             error:function(response) {
                                 //console.log(response);
@@ -923,7 +929,7 @@
                               }
                             },
                         });
-                    }
+                    //}
                 }
             });
 
